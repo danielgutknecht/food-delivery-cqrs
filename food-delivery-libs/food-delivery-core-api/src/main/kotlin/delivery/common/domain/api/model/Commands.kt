@@ -11,7 +11,7 @@ abstract class CustomerCommand(
 ) : AuditableAbstractCommand(auditEntry)
 
 abstract class CustomerOrderCommand(
-    open val targetAggregateIdentifier: CustomerOrder Id,
+    open val targetAggregateIdentifier: CustomerOrderId,
     override val auditEntry: AuditEntry
 ) : AuditableAbstractCommand(auditEntry)
 

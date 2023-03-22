@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>food-delivery-core-api</artifactId>
+    <name>food-delivery-core-api</name>
+    <description>Core API - Events and Commands</description>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>food-delivery</groupId>
+        <artifactId>food-delivery-libs</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Axon -->
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-spring-boot-starter</artifactId>
+            <version>${axon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-test</artifactId>
+            <version>${axon.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.axonframework.extensions.kotlin</groupId>
+            <artifactId>axon-kotlin</artifactId>
+            <version>${axon.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+
+
+</project>

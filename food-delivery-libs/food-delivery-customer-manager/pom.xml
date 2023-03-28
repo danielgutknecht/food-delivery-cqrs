@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>food-delivery-core-api</artifactId>
-    <name>food-delivery-core-api</name>
-    <description>Core API - Events and Commands</description>
+    <artifactId>food-delivery-custome-manager</artifactId>
+    <name>food-delivery-customer-manager</name>
+    <description>Customer manager information</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -16,29 +16,26 @@
     </parent>
 
     <dependencies>
-        <!-- Spring -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <groupId>food-delivery</groupId>
+            <artifactId>food-delivery-core-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
-        <!-- Axon -->
+        <!--AchUnit lib-->
         <dependency>
-            <groupId>org.axonframework</groupId>
-            <artifactId>axon-spring-boot-starter</artifactId>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit4</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.axonframework</groupId>
             <artifactId>axon-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.axonframework.extensions.kotlin</groupId>
-            <artifactId>axon-kotlin</artifactId>
         </dependency>
 
 
     </dependencies>
+
 
     <build>
         <plugins>
@@ -51,7 +48,7 @@
                         <plugin>no-arg</plugin>
                     </compilerPlugins>
                     <pluginOptions>
-                        <option>no-arg:annotation=kotlin.core.api.noarg.NoArg</option>
+                        <option>no-arg:annotation=core.api.noarg.NoArg</option>
                     </pluginOptions>
                 </configuration>
 

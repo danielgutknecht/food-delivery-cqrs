@@ -13,6 +13,7 @@
         <groupId>food-delivery</groupId>
         <artifactId>food-delivery-libs</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -22,44 +23,26 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!--AchUnit lib-->
         <dependency>
-            <groupId>com.tngtech.archunit</groupId>
-            <artifactId>archunit-junit4</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Axon -->
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.axonframework</groupId>
             <artifactId>axon-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.axonframework.extensions.kotlin</groupId>
+            <artifactId>axon-kotlin</artifactId>
+        </dependency>
     </dependencies>
 
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <groupId>org.jetbrains.kotlin</groupId>
-
-                <configuration>
-                    <compilerPlugins>
-                        <plugin>no-arg</plugin>
-                    </compilerPlugins>
-                    <pluginOptions>
-                        <option>no-arg:annotation=core.api.noarg.NoArg</option>
-                    </pluginOptions>
-                </configuration>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jetbrains.kotlin</groupId>
-                        <artifactId>kotlin-maven-noarg</artifactId>
-                        <version>${kotlin.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
 </project>

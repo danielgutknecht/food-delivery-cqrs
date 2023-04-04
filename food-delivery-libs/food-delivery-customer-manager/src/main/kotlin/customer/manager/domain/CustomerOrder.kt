@@ -14,7 +14,7 @@ import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle
 import org.axonframework.spring.stereotype.Aggregate
-import java.math.BigDecimal
+import java.lang.UnsupportedOperationException
 
 @Aggregate
 @NoArg
@@ -26,7 +26,7 @@ internal data class CustomerOrder(
     var orderTotal: Money
 ) {
 
-    val customerOrder = CustomerOrder::class.constructors
+    //val customerOrder = CustomerOrder::class.constructors
 
 
     //private Logger logger = LogManager.getLogger(TaskCreatedEvent.class);
@@ -60,14 +60,10 @@ internal data class CustomerOrder(
 
     @CommandHandler
     fun handle(command: MarkCustomerOrderAsDeliveredCommand) {
-        if (CustomerOrderState.CREATED == state) {
-            AggregateLifecycle.apply(
-                CustomerOrderDeliveredEvent(
-                    command.targetAggregateIdentifier,
-                    command.auditEntry
-                )
-            )
-        }
+        if (CustomerOrderState.CREATED == state)
+            AggregateLifecycle.apply(CustomerOrderDeliveredEvent(command.targetAggregateIdentifier, command.auditEntry))
+
+        else throw UnsupportedOperationException("the current state is not created")
     }
 
     @EventSourcingHandler

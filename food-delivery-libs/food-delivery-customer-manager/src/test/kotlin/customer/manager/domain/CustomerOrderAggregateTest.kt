@@ -10,8 +10,8 @@ import core.api.customer.model.CustomerOrderId
 import org.axonframework.messaging.interceptors.BeanValidationInterceptor
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.axonframework.test.aggregate.FixtureConfiguration
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import java.time.LocalDate
 
@@ -24,7 +24,7 @@ class CustomerOrderAggregateTest {
     private val orderTotal: Money = Money(BigDecimal(1000))
 
 
-    @Before
+    @BeforeEach
     fun setup() {
         fixture = AggregateTestFixture(CustomerOrder::class.java)
         fixture.registerCommandDispatchInterceptor(BeanValidationInterceptor())

@@ -8,6 +8,7 @@
         <groupId>food-delivery</groupId>
         <artifactId>food-delivery-backend</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>food-delivery-libs</artifactId>

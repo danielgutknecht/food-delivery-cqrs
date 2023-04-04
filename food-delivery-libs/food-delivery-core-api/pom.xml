@@ -13,6 +13,7 @@
         <groupId>food-delivery</groupId>
         <artifactId>food-delivery-libs</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -36,33 +37,5 @@
             <groupId>org.axonframework.extensions.kotlin</groupId>
             <artifactId>axon-kotlin</artifactId>
         </dependency>
-
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <groupId>org.jetbrains.kotlin</groupId>
-
-                <configuration>
-                    <compilerPlugins>
-                        <plugin>no-arg</plugin>
-                    </compilerPlugins>
-                    <pluginOptions>
-                        <option>no-arg:annotation=kotlin.core.api.noarg.NoArg</option>
-                    </pluginOptions>
-                </configuration>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jetbrains.kotlin</groupId>
-                        <artifactId>kotlin-maven-noarg</artifactId>
-                        <version>${kotlin.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
 </project>

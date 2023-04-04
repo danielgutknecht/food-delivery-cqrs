@@ -7,13 +7,16 @@ import core.api.customer.CreateCustomerOrderCommand
 import core.api.customer.CustomerCreatedEvent
 import core.api.customer.CustomerOrderCreatedEvent
 import core.api.customer.model.CustomerId
+import core.api.noarg.NoArg
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle
 import org.axonframework.spring.stereotype.Aggregate
+import java.lang.UnsupportedOperationException
 
 @Aggregate
+@NoArg
 internal data class Customer(
     @AggregateIdentifier
     var id: CustomerId,
@@ -25,9 +28,6 @@ internal data class Customer(
     lateinit var id: CustomerId
     lateinit var name: PersonName
     lateinit var orderList: Money*/
-
-    //Criar onstrutor vazio para o axon, foi adicionado noargs no pom, ver se funciona sem
-
 
     @CommandHandler
     fun handle(command: CreateCustomerCommand) {
@@ -59,6 +59,7 @@ internal data class Customer(
                     command.auditEntry
                 )
             )
+        else throw UnsupportedOperationException("Customer limit is reached")
     }
 
 }

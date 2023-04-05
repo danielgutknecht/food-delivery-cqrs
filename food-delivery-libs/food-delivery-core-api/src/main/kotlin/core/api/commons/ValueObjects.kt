@@ -1,13 +1,15 @@
-package delivery.common.domain.api.model
+package core.api.commons
 
 import java.math.BigDecimal
-import java.util.Date
+import java.time.LocalDate
 
-data class AuditEntry(val who: String, val `when`: Date)
+data class AuditEntry(val who: String, val `when`: LocalDate)
 
 data class PersonName(val fistName: String, val lastName: String)
 
 data class Money(val amount: BigDecimal) {
+
+    constructor() : this(BigDecimal(0))
 
     fun add(delta: Money): Money {
         return Money(amount.add(delta.amount))

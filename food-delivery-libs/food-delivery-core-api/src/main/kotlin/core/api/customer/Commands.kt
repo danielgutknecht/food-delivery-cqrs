@@ -1,6 +1,11 @@
-package delivery.common.domain.api.model
+package core.api.customer
 
-import delivery.common.domain.api.auditable.AuditableAbstractCommand
+import core.api.commons.AuditEntry
+import core.api.commons.Money
+import core.api.commons.PersonName
+import core.api.commons.auditable.AuditableAbstractCommand
+import core.api.customer.model.CustomerId
+import core.api.customer.model.CustomerOrderId
 import jakarta.validation.Valid
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 
@@ -18,21 +23,30 @@ abstract class CustomerOrderCommand(
 data class CreateCustomerCommand(
     @TargetAggregateIdentifier
     override val targetAggregateIdentifier: CustomerId,
+    @field:Valid
     val name: PersonName,
     val orderLimit: Money,
     override val auditEntry: AuditEntry
-) : CustomerCommand(targetAggregateIdentifier, auditEntry)
+) : CustomerCommand(targetAggregateIdentifier, auditEntry) {
+    constructor(name: PersonName, orderLimit: Money, auditEntry: AuditEntry) : this(
+        CustomerId(),
+        name,
+        orderLimit,
+        auditEntry
+    )
+}
 
 data class CreateCustomerOrderCommand(
     @TargetAggregateIdentifier
-    override val targetAggregateIdentifier: CustomerOrderId,
+    override val targetAggregateIdentifier: CustomerId,
     val customerOrderId: CustomerOrderId,
     @field:Valid
     val orderTotal: Money,
     override val auditEntry: AuditEntry
-) : CustomerOrderCommand(targetAggregateIdentifier, auditEntry)
+) : CustomerCommand(targetAggregateIdentifier, auditEntry)
 
 data class MarkCustomerOrderAsDeliveredCommand(
+    @TargetAggregateIdentifier
     override val targetAggregateIdentifier: CustomerOrderId,
     override val auditEntry: AuditEntry
 ) : CustomerOrderCommand(targetAggregateIdentifier, auditEntry)

@@ -8,6 +8,7 @@
         <groupId>food-delivery</groupId>
         <artifactId>food-delivery-backend</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>food-delivery-libs</artifactId>
@@ -17,6 +18,7 @@
 
     <modules>
         <module>food-delivery-core-api</module>
+        <module>food-delivery-customer-manager</module>
     </modules>
 
 </project>

@@ -1,6 +1,11 @@
-package delivery.common.domain.api.model
+package core.api.customer
 
-import delivery.common.domain.api.auditable.AuditableAbstractEvent
+import core.api.commons.auditable.AuditableAbstractEvent
+import core.api.commons.AuditEntry
+import core.api.commons.Money
+import core.api.commons.PersonName
+import core.api.customer.model.CustomerId
+import core.api.customer.model.CustomerOrderId
 
 abstract class CustomerEvent(open val aggregateIdentifier: CustomerId, override val auditEntry: AuditEntry) :
     AuditableAbstractEvent(auditEntry)
@@ -15,7 +20,7 @@ data class CustomerCreatedEvent(
     override val auditEntry: AuditEntry
 ) : CustomerEvent(aggregateIdentifier, auditEntry)
 
-data class CustomerOrderCreateEvent(
+data class CustomerOrderCreatedEvent(
     val orderTotal: Money,
     override val aggregateIdentifier: CustomerId,
     val customerOrderId: CustomerOrderId,

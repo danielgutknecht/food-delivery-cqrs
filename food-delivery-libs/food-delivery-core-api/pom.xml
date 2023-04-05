@@ -17,12 +17,6 @@
     </parent>
 
     <dependencies>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-
         <!-- Axon -->
         <dependency>
             <groupId>org.axonframework</groupId>
@@ -37,5 +31,14 @@
             <groupId>org.axonframework.extensions.kotlin</groupId>
             <artifactId>axon-kotlin</artifactId>
         </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
     </dependencies>
+
+
 </project>

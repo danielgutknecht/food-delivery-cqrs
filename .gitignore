@@ -25,3 +25,5 @@ hs_err_pid*
 /target/
 /food-delivery-libs/food-delivery-core-api/target/
 /food-delivery-libs/food-delivery-customer-manager/target/
+/food-delivery-application/target/
+

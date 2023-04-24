@@ -3,7 +3,7 @@ package core.api.customer
 import core.api.commons.auditable.AuditableAbstractEvent
 import core.api.commons.AuditEntry
 import core.api.commons.Money
-import core.api.commons.PersonName
+import core.api.commons.Person
 import core.api.customer.model.CustomerId
 import core.api.customer.model.CustomerOrderId
 
@@ -14,10 +14,10 @@ abstract class CustomerOrderEvent(open val aggregateIdentifier: CustomerOrderId,
     AuditableAbstractEvent(auditEntry)
 
 data class CustomerCreatedEvent(
-    val name: PersonName,
-    val orderLimit: Money,
-    override val aggregateIdentifier: CustomerId,
-    override val auditEntry: AuditEntry
+        val name: Person,
+        val orderLimit: Money,
+        override val aggregateIdentifier: CustomerId,
+        override val auditEntry: AuditEntry
 ) : CustomerEvent(aggregateIdentifier, auditEntry)
 
 data class CustomerOrderCreatedEvent(

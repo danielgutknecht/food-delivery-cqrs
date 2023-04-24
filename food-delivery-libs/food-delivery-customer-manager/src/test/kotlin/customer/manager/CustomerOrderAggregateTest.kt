@@ -1,4 +1,4 @@
-package customer.manager.domain
+package customer.manager
 
 import core.api.commons.AuditEntry
 import core.api.commons.Money

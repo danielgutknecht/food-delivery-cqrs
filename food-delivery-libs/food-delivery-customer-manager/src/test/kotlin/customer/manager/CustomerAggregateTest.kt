@@ -1,8 +1,8 @@
-package customer.manager.domain
+package customer.manager
 
 import core.api.commons.AuditEntry
 import core.api.commons.Money
-import core.api.commons.PersonName
+import core.api.commons.Person
 import core.api.customer.CreateCustomerCommand
 import core.api.customer.CreateCustomerOrderCommand
 import core.api.customer.CustomerCreatedEvent
@@ -33,7 +33,7 @@ class CustomerAggregateTest {
 
     @Test
     fun createCustomerTest() {
-        val name = PersonName("UserFistName", "UserLastName")
+        val name = Person("UserFistName", "UserLastName")
         val createCustomerCommand = CreateCustomerCommand(name, orderLimit, auditEntry)
         val customerCreatedEvent =
             CustomerCreatedEvent(name, orderLimit, createCustomerCommand.targetAggregateIdentifier, auditEntry)
@@ -43,7 +43,7 @@ class CustomerAggregateTest {
 
     @Test
     fun createCustomerOrderTest() {
-        val name = PersonName("UserFistName", "UserLastName")
+        val name = Person("UserFistName", "UserLastName")
         val createCustomerOrderCommand = CreateCustomerOrderCommand(customerId,orderId, orderLimit, auditEntry)
         val customerCreatedEvent = CustomerCreatedEvent(name, orderLimit.add(Money(BigDecimal.ONE)), createCustomerOrderCommand.targetAggregateIdentifier, auditEntry)
         val customerOrderCreatedEvent = CustomerOrderCreatedEvent(orderLimit, customerId, createCustomerOrderCommand.customerOrderId, auditEntry)
@@ -55,7 +55,7 @@ class CustomerAggregateTest {
 
     @Test
     fun createCustomerOrderFailOrderLimitTest() {
-        val name = PersonName("UserFistName", "UserLastName")
+        val name = Person("UserFistName", "UserLastName")
         val createCustomerOrderCommand = CreateCustomerOrderCommand(customerId,orderId, orderLimit, auditEntry)
         val customerCreatedEvent = CustomerCreatedEvent(name, orderLimit, createCustomerOrderCommand.targetAggregateIdentifier, auditEntry)
         val customerOrderCreatedEvent = CustomerOrderCreatedEvent(orderLimit, customerId, createCustomerOrderCommand.customerOrderId, auditEntry)

@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  rabbitmq3:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+
+  axon-server:
+    # docker run -d --name my-axon-server -p 8024:8024 -p 8124:8124 axoniq/axonserver
+    image: axoniq/axonserver
+    container_name: distributed-example-axon-server
+    healthcheck:
+      test: curl -f http://localhost:8024/actuator/health || exit 1;
+    ports:
+      - 8024:8024
+      - 8124:8124
+      - 8224:8224

@@ -7,8 +7,10 @@ enum class CustomerOrderState {
     CREATED, DELIVERED, CANCELLED
 }
 
-class CustomerId(val identifier: String) : Serializable {
-    constructor() : this(UUID.randomUUID().toString())
+enum class CustomerState{CREATED}
+
+class CustomerId(val identifier: String = UUID.randomUUID().toString()) : Serializable {
+    //constructor() : this(UUID.randomUUID().toString())
 
     override fun toString(): String = identifier
 }

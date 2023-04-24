@@ -2,7 +2,7 @@ package core.api.customer
 
 import core.api.commons.AuditEntry
 import core.api.commons.Money
-import core.api.commons.PersonName
+import core.api.commons.Person
 import core.api.commons.auditable.AuditableAbstractCommand
 import core.api.customer.model.CustomerId
 import core.api.customer.model.CustomerOrderId
@@ -21,14 +21,14 @@ abstract class CustomerOrderCommand(
 ) : AuditableAbstractCommand(auditEntry)
 
 data class CreateCustomerCommand(
-    @TargetAggregateIdentifier
+        @TargetAggregateIdentifier
     override val targetAggregateIdentifier: CustomerId,
-    @field:Valid
-    val name: PersonName,
-    val orderLimit: Money,
-    override val auditEntry: AuditEntry
+        @field:Valid
+    val name: Person,
+        val orderLimit: Money,
+        override val auditEntry: AuditEntry
 ) : CustomerCommand(targetAggregateIdentifier, auditEntry) {
-    constructor(name: PersonName, orderLimit: Money, auditEntry: AuditEntry) : this(
+    constructor(name: Person, orderLimit: Money, auditEntry: AuditEntry) : this(
         CustomerId(),
         name,
         orderLimit,

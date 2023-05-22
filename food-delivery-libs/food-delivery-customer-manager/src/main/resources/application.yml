@@ -1,6 +1,10 @@
 spring:
   main:
     allow-bean-definition-overriding: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
   datasource:
     url: jdbc:h2:mem:db
     username: sa
@@ -10,8 +14,12 @@ spring:
     console:
       enabled: true
       path: /h2-console
-    hibernate:
-      ddl-auto: create-drop
+  logging:
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+    level:
+      org.springframework: info
+      org.hibernate: debug
 axon:
   serializer:
     general: jackson
@@ -24,4 +32,6 @@ axon:
   eventhandling:
     processors:
       customer:
+        mode: tracking
+      restaurant:
         mode: tracking
